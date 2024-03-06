@@ -48,7 +48,7 @@ function Login() {
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
 				/>
-				<button>Login</button>
+				<button className="p-2 px-3 rounded shadow-sm">Login</button>
 			</form>
 		</div>
 	);

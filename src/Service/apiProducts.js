@@ -31,7 +31,7 @@ export async function fetchAllProducts() {
 		});
 		const data = await response.json();
 		console.log(data);
-		return data.data;
+		return data?.data;
 	} catch (error) {
 		console.log("Error in getAllProducts: " + error);
 	}

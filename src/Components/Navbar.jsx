@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
-
+import { useAuth } from "../context/authContext";
 function Navbar() {
+	const { loggedIn } = useAuth();
+
 	return (
-		<nav className="flex items-center justify-center space-x-5 font-semibold">
+		<nav className="flex items-center justify-center font-semibold space-x-7">
 			<NavLink to={"/store"} className="hover:text-black hover:scale-105">
 				Store
 			</NavLink>
@@ -15,6 +17,11 @@ function Navbar() {
 			<NavLink to={"about"} className="hover:text-black hover:scale-105">
 				About Us
 			</NavLink>
+			{loggedIn && (
+				<NavLink to={"cart"} className="hover:text-black hover:scale-105">
+					Cart
+				</NavLink>
+			)}
 		</nav>
 	);
 }

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Button from "../Components/Button";
+
 function Home() {
 	return (
 		<div className="relative flex flex-col w-full space-y-10 text-green-400 sm:flex-row">

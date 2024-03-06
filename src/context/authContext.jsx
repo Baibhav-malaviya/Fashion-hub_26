@@ -1,22 +1,17 @@
 /* eslint-disable react-refresh/only-export-components */
 import PropTypes from "prop-types";
-import { createContext, useContext, useEffect, useState } from "react";
-import { isLoggedIn } from "../Service/auth";
+import { createContext, useContext, useState } from "react";
 import { logout as performLogout } from "../Service/apiUser";
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-	const [loggedIn, setLoggedIn] = useState(null);
-	useEffect(() => {
-		(async () => {
-			setLoggedIn(await isLoggedIn());
-		})();
-	}, []);
-
-	console.log("loggedIn in auth context: ", loggedIn);
+	const [loggedIn, setLoggedIn] = useState(
+		!!localStorage.getItem("isLoggedIn")
+	);
 
 	const login = () => {
+		localStorage.setItem("isLoggedIn", true);
 		setLoggedIn(true);
 	};
 

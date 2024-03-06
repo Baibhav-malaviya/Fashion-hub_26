@@ -1,16 +1,19 @@
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+
 import Home from "./Pages/Home";
 import Blog from "./Pages/Blog";
 import Store from "./Pages/Store";
+import { loader as storeLoader } from "./Pages/Store";
 import About from "./Pages/About";
 import Wishlist from "./Pages/Wishlist";
 import Cart from "./Pages/Cart";
-
 import { loader as headerLoader } from "./Components/Header";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Login from "./Features/user/Login";
 import Layout from "./Components/Layout";
 import PageNotFound from "./Components/PageNotFound";
 import Error from "./Components/Error";
+import ProtectedRoute from "./Components/ProtectedRoute";
+import Order from "./Pages/Order";
 
 const router = createBrowserRouter([
 	{
@@ -33,6 +36,11 @@ const router = createBrowserRouter([
 			{
 				path: "/store",
 				element: <Store />,
+				loader: storeLoader,
+			},
+			{
+				path: "/order",
+				element: <ProtectedRoute Component={Order} />,
 			},
 			{
 				path: "/about",
@@ -40,11 +48,11 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "/wishlist",
-				element: <Wishlist />,
+				element: <ProtectedRoute Component={Wishlist} />,
 			},
 			{
 				path: "/cart",
-				element: <Cart />,
+				element: <ProtectedRoute Component={Cart} />,
 			},
 			{
 				path: "*",

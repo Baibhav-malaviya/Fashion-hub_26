@@ -1,6 +1,6 @@
 const BASE_URL = "http://localhost:8000/api";
 
-export async function addToWishlist(quantity, id) {
+export async function addToWishlist(id, quantity = 1) {
 	try {
 		const response = await fetch(`${BASE_URL}/wishlist/add/${id}`, {
 			method: "POST",
