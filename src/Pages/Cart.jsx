@@ -1,10 +1,14 @@
 import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import Item from "../Features/cart/Item";
 import Spinner from "../Components/Spinner";
 import AddressForm from "../Features/cart/AddressForm";
+import Logo from "../Components/Logo";
+import Loader from "../Components/Loader";
+import Checkout from "../Features/cart/Checkout";
 
 function Cart() {
 	const { cart, status } = useSelector((state) => state.cart);
@@ -25,11 +29,28 @@ function Cart() {
 	console.log("Delivery Address: ", deliveryAddress);
 
 	console.log("SELECTED ITEMS: ", selectedItems);
-	if (status === "loading") return <Spinner />;
+	if (status === "loading") return <Loader />;
+
+	if (cart.length === 0)
+		return (
+			<div className="space-y-5 ">
+				<Logo />
+				<div className="flex items-center justify-center space-x-2">
+					<span className="text-lg">Your cart is empty </span>
+					<Link
+						to={"/store"}
+						className="p-2 px-3 font-semibold bg-yellow-300 rounded hover:bg-yellow-400"
+					>
+						Shop Now
+					</Link>
+				</div>
+			</div>
+		);
+
 	return (
 		<div>
-			<div className="flex flex-col md:flex-row">
-				<div>
+			<div className="flex flex-col p-4 md:flex-row ">
+				<div className="flex flex-col w-full px-24 space-y-2 divide-y divide-gray-300">
 					{cart.map((item) => (
 						<Item
 							item={item}
@@ -38,9 +59,11 @@ function Cart() {
 						/>
 					))}
 				</div>
-				<div className="bg-pink-300 h-52 w-52"></div>
 			</div>
-			<AddressForm onSubmit={handleSaveAddress} />
+			<div className="flex flex-col items-center justify-center m-0 space-x-6 md:flex-row md:mx-24">
+				<AddressForm onSubmit={handleSaveAddress} />
+				<Checkout deliveryAddress={deliveryAddress} />
+			</div>
 		</div>
 	);
 }

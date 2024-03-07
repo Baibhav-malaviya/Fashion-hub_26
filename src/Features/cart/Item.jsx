@@ -1,10 +1,12 @@
-import { Cross } from "lucide-react";
+import { Cross, Delete, Plus, Trash, Trash2 } from "lucide-react";
+import PropTypes from "prop-types";
 import Update from "../../Components/Update";
 import Spinner from "../../Components/Spinner";
 import { useDispatch } from "react-redux";
 import { remove } from "./cartSlice";
 import { useState } from "react";
 import { deleteFromCart } from "../../Service/apiCart";
+import { formatCurrency, formatName } from "../../Utils/helper";
 
 function Item({ item, toggleSelectItem }) {
 	const dispatch = useDispatch();
@@ -12,45 +14,57 @@ function Item({ item, toggleSelectItem }) {
 	const [isChecked, setIsChecked] = useState(true);
 
 	return (
-		<div className="flex items-center justify-between h-24 px-5 bg-black border-2 border-red-700">
-			<input
-				type="checkbox"
-				checked={isChecked}
-				className="scale-150 cursor-pointer accent-green-400"
-				onChange={() => {
-					setIsChecked(!isChecked);
-					toggleSelectItem(item);
-				}}
-			/>
-			<div className="flex items-center justify-center w-32 h-full bg-green-200 overscroll-hidden">
+		<div className="flex items-center justify-between h-32 px-5 pt-2 ">
+			<div className="relative flex items-center w-32 h-full overscroll-hidden">
+				<input
+					type="checkbox"
+					checked={isChecked}
+					className="absolute scale-150 cursor-pointer accent-green-400 top-2 left-2"
+					onChange={() => {
+						setIsChecked(!isChecked);
+						toggleSelectItem(item);
+					}}
+				/>
 				<img className="h-full " src={item.productImage} alt="" />
 			</div>
-			<div className="h-full bg-red-300 grow">
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque ipsa
-					omnis ullam aliquam animi cum laborum laudantium et placeat
-					repudiandae!
-				</p>
+
+			<div className="text-xl">{formatName(item.name)}</div>
+
+			<div className="font-bold">{formatCurrency(item.price)}</div>
+
+			<Update productId={item._id} quantity={item.quantity} />
+
+			<div className="flex items-center justify-center font-bold">
+				{" "}
+				{item.quantity}{" "}
+				<span>
+					<Plus className="mx-4 rotate-45" />
+				</span>{" "}
+				{formatCurrency(item.quantity * item.price)}
 			</div>
-			<div className="flex items-center justify-center h-full bg-blue-200">
-				<Update productId={item._id} quantity={item.quantity} />
-				{isLoading ? (
-					<span className="scale-75">
-						<Spinner />
-					</span>
-				) : (
-					<Cross
-						onClick={async () => {
-							setIsLoading(true);
-							await deleteFromCart(item._id);
-							setIsLoading(false);
-							dispatch(remove(item._id));
-						}}
-					/>
-				)}
-			</div>
+			{isLoading ? (
+				<span className="scale-75">
+					<Spinner />
+				</span>
+			) : (
+				<Trash2
+					onClick={async () => {
+						setIsLoading(true);
+						await deleteFromCart(item._id);
+						setIsLoading(false);
+						dispatch(remove(item._id));
+					}}
+					// fill="red"
+					className="font-light text-red-500 hover:cursor-pointer hover:opacity-60"
+				/>
+			)}
 		</div>
 	);
 }
+
+Item.propTypes = {
+	item: PropTypes.object,
+	toggleSelectItem: PropTypes.func,
+};
 
 export default Item;

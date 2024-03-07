@@ -16,7 +16,7 @@ function AddressForm({ onSubmit }) {
 	return (
 		<form
 			onSubmit={handleSubmit}
-			className="max-w-md px-8 pt-6 pb-8 mx-auto mb-4 bg-white rounded shadow-md"
+			className="w-1/2 px-8 pt-6 pb-8 mx-auto mb-4 bg-white rounded shadow-md "
 		>
 			<div className="mb-4">
 				<label

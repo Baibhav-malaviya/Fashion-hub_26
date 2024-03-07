@@ -49,12 +49,12 @@ function Card({ product }) {
 	};
 	return (
 		<div
-			className={`relative inline-flex flex-col justify-between h-64 gap-2 p-2 rounded-sm shadow-sm w-52 shadow-stone-600 hover:cursor-pointer ${
+			className={`relative inline-flex flex-col justify-between hover:shadow-md h-64 gap-2 p-2 rounded-sm shadow-sm w-52 shadow-stone-600  hover:cursor-pointer ${
 				isLoading && "scale-95 blur-sm"
 			}`}
 		>
-			<div>
-				<img src={product.productImage} className="w-[170px]" alt="" />
+			<div className="w-[170px]  overflow-hidden flex items-center justify-center ">
+				<img src={product.productImage} alt="" />
 			</div>
 			<div>
 				<div className="flex items-center justify-between my-2">
