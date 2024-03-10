@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
 import { formatName, formatCurrency } from "../../Utils/helper";
-import { add } from "../cart/cartSlice";
+// import { add } from "../cart/cartSlice";
 import { Link } from "react-router-dom";
-import { addToCart } from "../../Service/apiCart";
+// import { addToCart } from "../../Service/apiCart";
 import {
 	add as addToWishlist,
 	remove as removeFromWishlist,
@@ -13,6 +13,7 @@ import {
 } from "../../Service/apiWishlist";
 import { Heart } from "lucide-react";
 import { useState } from "react";
+import AddToCart from "../cart/AddToCart";
 
 function Card({ product }) {
 	// const product = {
@@ -34,19 +35,19 @@ function Card({ product }) {
 
 	const cart = useSelector((state) => state.cart.cart);
 	const wishlist = useSelector((state) => state.wishlist.wishlist);
-
+	const dispatch = useDispatch();
 	const alreadyAddedToCart = cart.some((item) => item._id === product._id);
 	const alreadyAddedToWishlist = wishlist.some(
 		(item) => item._id === product._id
 	);
 
-	const dispatch = useDispatch();
-	const handleAddToCart = async (item) => {
-		setIsLoading(true);
-		await addToCart(1, product._id);
-		setIsLoading(false);
-		dispatch(add(item));
-	};
+	// const dispatch = useDispatch();
+	// const handleAddToCart = async (item) => {
+	// 	setIsLoading(true);
+	// 	await addToCart(1, product._id);
+	// 	setIsLoading(false);
+	// 	dispatch(add(item));
+	// };
 	return (
 		<div
 			className={`relative inline-flex flex-col justify-between hover:shadow-md h-64 gap-2 p-2 rounded-sm shadow-sm w-52 shadow-stone-600  hover:cursor-pointer ${
@@ -67,12 +68,7 @@ function Card({ product }) {
 							Go to cart
 						</Link>
 					) : (
-						<button
-							className="p-[6px] px-2 hover:scale-105 transition-all  text-xs font-bold bg-yellow-500 rounded"
-							onClick={() => handleAddToCart({ ...product, quantity: 1 })}
-						>
-							Add to Cart
-						</button>
+						<AddToCart product={product} setIsLoading={setIsLoading} />
 					)}
 				</div>
 				<div className="flex items-center justify-start space-x-2">

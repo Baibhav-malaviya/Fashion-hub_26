@@ -1,4 +1,4 @@
-import { Cross, Delete, Plus, Trash, Trash2 } from "lucide-react";
+import { Plus, Trash2 } from "lucide-react";
 import PropTypes from "prop-types";
 import Update from "../../Components/Update";
 import Spinner from "../../Components/Spinner";
@@ -14,12 +14,12 @@ function Item({ item, toggleSelectItem }) {
 	const [isChecked, setIsChecked] = useState(true);
 
 	return (
-		<div className="flex items-center justify-between h-32 px-5 pt-2 ">
-			<div className="relative flex items-center w-32 h-full overscroll-hidden">
+		<div className="flex items-center justify-between h-24 pr-5 shadow-md ">
+			<div className="relative flex items-center w-32 h-full border-r-[1.5px] overscroll-hidden">
 				<input
 					type="checkbox"
 					checked={isChecked}
-					className="absolute scale-150 cursor-pointer accent-green-400 top-2 left-2"
+					className="absolute scale-105 cursor-pointer accent-gray-400 top-2 left-2"
 					onChange={() => {
 						setIsChecked(!isChecked);
 						toggleSelectItem(item);

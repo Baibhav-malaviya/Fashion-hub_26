@@ -1,8 +1,16 @@
 import PropTypes from "prop-types";
+import { checkout } from "../../Service/apiPayment";
 
-function Checkout({ deliveryAddress }) {
+function Checkout({ deliveryAddress, selectedItems }) {
 	const addressLines = deliveryAddress.split(", ");
 	console.log("Checkout: ", deliveryAddress);
+
+	const totalAmount = selectedItems.reduce((sum, item) => sum + item.price, 0);
+	//!function for handle checkout
+	const checkoutHandler = async (amount) => {
+		const orderDetail = await checkout(amount);
+		console.log("ORDER DETAIL: ", orderDetail);
+	};
 
 	return (
 		<div className="w-1/2">
@@ -21,12 +29,19 @@ function Checkout({ deliveryAddress }) {
 					</div>
 				</div>
 			)}
+			<div
+				className="p-3 py-2 font-semibold text-center shadow-md cursor-pointer"
+				onClick={() => checkoutHandler(Number(totalAmount))}
+			>
+				Checkout
+			</div>
 		</div>
 	);
 }
 
 Checkout.propTypes = {
 	deliveryAddress: PropTypes.string,
+	selectedItems: PropTypes.object,
 };
 
 export default Checkout;

@@ -4,7 +4,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import Item from "../Features/cart/Item";
-import Spinner from "../Components/Spinner";
 import AddressForm from "../Features/cart/AddressForm";
 import Logo from "../Components/Logo";
 import Loader from "../Components/Loader";
@@ -33,7 +32,7 @@ function Cart() {
 
 	if (cart.length === 0)
 		return (
-			<div className="space-y-5 ">
+			<div className="my-20 space-y-5">
 				<Logo />
 				<div className="flex items-center justify-center space-x-2">
 					<span className="text-lg">Your cart is empty </span>
@@ -62,7 +61,10 @@ function Cart() {
 			</div>
 			<div className="flex flex-col items-center justify-center m-0 space-x-6 md:flex-row md:mx-24">
 				<AddressForm onSubmit={handleSaveAddress} />
-				<Checkout deliveryAddress={deliveryAddress} />
+				<Checkout
+					deliveryAddress={deliveryAddress}
+					selectedItems={selectedItems}
+				/>
 			</div>
 		</div>
 	);

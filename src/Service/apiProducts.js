@@ -19,9 +19,10 @@ export async function addProduct(product) {
 		console.log("Error in addProduct: ", error.message);
 	}
 }
-export async function fetchAllProducts() {
+export async function fetchAllProducts(page) {
 	try {
-		const response = await fetch(`${BASE_URL}/products`, {
+		// ?query=${query}
+		const response = await fetch(`${BASE_URL}/products?page=${page}&limit=10`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",
@@ -70,5 +71,46 @@ export async function deleteProductById(id) {
 		return data?.data;
 	} catch (error) {
 		console.log("Error in deleteProductById: " + error.message);
+	}
+}
+export async function getProductByQuery(query) {
+	try {
+		const response = await fetch(
+			`${BASE_URL}/products/searchByQuery?query=${query}`,
+			{
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: "Bearer yourAccessToken",
+				},
+				credentials: "include",
+			}
+		);
+		const data = await response.json();
+		console.log(data);
+		return data?.data;
+	} catch (error) {
+		console.log("Error in getProductByQuery: " + error.message);
+	}
+}
+
+export async function getProductByCategory(query) {
+	try {
+		const response = await fetch(
+			`${BASE_URL}/products/searchByCategory?query=${query}`,
+			{
+				method: "GET",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization: "Bearer yourAccessToken",
+				},
+				credentials: "include",
+			}
+		);
+		const data = await response.json();
+		console.log(data);
+		return data?.data;
+	} catch (error) {
+		console.log("Error in getProductByCategory: " + error.message);
 	}
 }

@@ -14,7 +14,12 @@ function Update({ productId, quantity }) {
 	if (deleting)
 		return (
 			<span className="p-2 font-semibold bg-gray-400 rounded-lg opacity-70">
-				Deleting...
+				<span>Deleting </span>
+				<span className="loading-dots">
+					<span className="dot"></span>
+					<span className="dot"></span>
+					<span className="dot"></span>
+				</span>
 			</span>
 		);
 	return (

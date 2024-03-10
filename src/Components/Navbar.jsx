@@ -14,9 +14,6 @@ function Navbar() {
 			<NavLink to={"blog"} className="hover:text-black hover:scale-105">
 				Blog
 			</NavLink>
-			<NavLink to={"about"} className="hover:text-black hover:scale-105">
-				About Us
-			</NavLink>
 			{loggedIn && (
 				<NavLink to={"cart"} className="hover:text-black hover:scale-105">
 					Cart
