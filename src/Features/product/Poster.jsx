@@ -20,8 +20,8 @@ function Poster({ from = "from-gray-600", to = "to-gray-200", poster }) {
 					</div>
 				</div>
 				<img
-					src="public/product-5.png"
-					className="h-full p-2 scale-[2.5] -rotate-45 mr-5 mt-4"
+					src="poster1.png"
+					className="h-full scale-[2.5] p-2 mt-4 mr-5 -rotate-45"
 					alt=""
 				/>
 			</div>

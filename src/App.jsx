@@ -14,6 +14,7 @@ import PageNotFound from "./Components/PageNotFound";
 import Error from "./Components/Error";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import Order from "./Pages/Order";
+import Checkout from "./Features/cart/Checkout";
 
 const router = createBrowserRouter([
 	{
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
 			{
 				path: "/cart",
 				element: <ProtectedRoute Component={Cart} />,
+			},
+			{
+				path: "/checkout",
+				element: <ProtectedRoute Component={Checkout} />,
 			},
 			{
 				path: "*",

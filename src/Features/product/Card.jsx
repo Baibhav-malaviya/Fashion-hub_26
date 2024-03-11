@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { formatName, formatCurrency } from "../../Utils/helper";
 // import { add } from "../cart/cartSlice";
@@ -16,21 +17,6 @@ import { useState } from "react";
 import AddToCart from "../cart/AddToCart";
 
 function Card({ product }) {
-	// const product = {
-	// 	_id: "65b61ab2f41e8d3ce0764f9e",
-	// 	category: "fashion",
-	// 	createdAt: "2024-01-28T09:13:22.557Z",
-	// 	description:
-	// 		"this is a half sleeve t-shirt for professional, just for testing",
-	// 	name: "t-shirt",
-	// 	price: 289,
-	// 	productImage:
-	// 		"http://res.cloudinary.com/baibhavmalaviya/image/upload/v1706433200/qidxcelpoexmsc7avqi6.webp",
-	// 	reviews: [],
-	// 	stock: 30,
-	// 	tags: ["t-shirt", "half-sleeve", "cotton"],
-	// 	updatedAt: "2024-01-28T09:13:22.557Z",
-	// };
 	const [isLoading, setIsLoading] = useState(false);
 
 	const cart = useSelector((state) => state.cart.cart);
@@ -41,13 +27,6 @@ function Card({ product }) {
 		(item) => item._id === product._id
 	);
 
-	// const dispatch = useDispatch();
-	// const handleAddToCart = async (item) => {
-	// 	setIsLoading(true);
-	// 	await addToCart(1, product._id);
-	// 	setIsLoading(false);
-	// 	dispatch(add(item));
-	// };
 	return (
 		<div
 			className={`relative inline-flex flex-col justify-between hover:shadow-md h-64 gap-2 p-2 rounded-sm shadow-sm w-52 shadow-stone-600  hover:cursor-pointer ${
@@ -104,5 +83,9 @@ function Card({ product }) {
 		</div>
 	);
 }
+
+Card.propTypes = {
+	product: PropTypes.object,
+};
 
 export default Card;

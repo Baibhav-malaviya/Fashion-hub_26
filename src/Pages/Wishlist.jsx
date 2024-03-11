@@ -26,7 +26,6 @@ function Wishlist() {
 		);
 	return (
 		<div>
-			This is Wishlist page
 			<div className="flex flex-wrap justify-between gap-2 md:px-20">
 				{wishlist.map((item) => (
 					<Card item={item} key={item._id} />

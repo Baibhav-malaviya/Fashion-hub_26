@@ -30,18 +30,17 @@ function Store() {
 		{
 			name: "watches",
 			offer: 50,
-			imgUri:
-				"C:Users\baibhDownloadsWhatsApp Image 2024-03-07 at 15.20.43_79379d84.jpg",
+			imgUri: "poster1.png",
 		},
 		{
 			name: "t-shirt",
 			offer: 90,
-			imgUri: "",
+			imgUri: "poster2.png",
 		},
 		{
 			name: "jacket",
 			offer: 30,
-			imgUri: "",
+			imgUri: "poster1.png",
 		},
 	];
 	// let products = useLoaderData() || [];
@@ -241,10 +240,10 @@ function Store() {
 					))}
 				</div>
 
-				<div className="flex justify-between px-10 mt-5">
+				<div className="flex items-center justify-between px-10 mt-5">
 					<MoveLeft
 						size={40}
-						className={`p-2 rounded-full shadow-md hover:cursor-pointer ${
+						className={`p-2 rounded-full  shadow-md hover:cursor-pointer ${
 							!hasPrevPage && "invisible"
 						}`}
 						onClick={() => {
@@ -252,6 +251,9 @@ function Store() {
 							// setPage(prevPage);
 						}}
 					/>
+
+					<span className="text-gray-400 font-cutive-mono ">{`Page: ${currPage}/${totalPages}`}</span>
+
 					<MoveRight
 						size={40}
 						className={`p-2 rounded-full shadow-md hover:cursor-pointer ${

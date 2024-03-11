@@ -1,4 +1,5 @@
 import { Trash2 } from "lucide-react";
+import PropTypes from "prop-types";
 import { formatCurrency } from "../../Utils/helper";
 import { deleteFromWishList } from "../../Service/apiWishlist";
 import { useState } from "react";
@@ -13,14 +14,14 @@ function Card({ item }) {
 	const [adding, setAdding] = useState(false);
 	const dispatch = useDispatch();
 	const cart = useSelector((state) => state.cart.cart);
-	const alreadyAddedToCart = cart.some((el) => el._id === el._id);
+	const alreadyAddedToCart = cart.some((el) => el._id === item._id);
 	// const item = {
 	// 	name: "BAt",
 	// 	price: 200,
 	// };
 	return (
 		<div>
-			<div className="w-full h-auto overflow-hidden transition-all bg-gray-100 rounded shadow-md sm:w-96">
+			<div className="flex flex-col flex-shrink w-full h-auto overflow-hidden transition-all bg-gray-100 rounded shadow-md sm:w-80">
 				<div className="w-full overflow-hidden aspect-video">
 					<img src={item.productImage} className="h-full mx-auto" alt="" />
 				</div>
@@ -63,5 +64,9 @@ function Card({ item }) {
 		</div>
 	);
 }
+
+Card.propTypes = {
+	item: PropTypes.object,
+};
 
 export default Card;

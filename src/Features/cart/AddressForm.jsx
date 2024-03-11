@@ -16,7 +16,7 @@ function AddressForm({ onSubmit }) {
 	return (
 		<form
 			onSubmit={handleSubmit}
-			className="w-1/2 px-8 pt-6 pb-8 mx-auto mb-4 bg-white rounded shadow-md "
+			className="w-full px-8 pt-6 pb-8 mx-auto mb-4 bg-white rounded shadow-md "
 		>
 			<div className="mb-4">
 				<label
@@ -30,6 +30,7 @@ function AddressForm({ onSubmit }) {
 					id="address"
 					type="text"
 					value={address}
+					required
 					onChange={(e) => setAddress(e.target.value)}
 					placeholder="Enter address "
 				/>
@@ -45,6 +46,7 @@ function AddressForm({ onSubmit }) {
 					className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
 					id="city"
 					type="text"
+					required
 					value={city}
 					onChange={(e) => setCity(e.target.value)}
 					placeholder="Enter city"
@@ -61,6 +63,7 @@ function AddressForm({ onSubmit }) {
 					className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
 					id="state"
 					type="text"
+					required
 					value={state}
 					onChange={(e) => setState(e.target.value)}
 					placeholder="Enter state"
@@ -76,6 +79,7 @@ function AddressForm({ onSubmit }) {
 				<input
 					className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
 					id="zip"
+					required
 					type="text"
 					value={zip}
 					onChange={(e) => setZip(e.target.value)}
