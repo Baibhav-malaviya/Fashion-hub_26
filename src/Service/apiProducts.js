@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:8000/api";
+const BASE_URL = "https://voguelane.onrender.com/api";
 
 export async function addProduct(product) {
 	//   const postData = { name, description, price, stock, category, tags, productImage };

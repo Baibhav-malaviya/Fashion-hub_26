@@ -1,13 +1,13 @@
 import { useSelector } from "react-redux";
 import Card from "../Features/wishlist/Card";
-import Spinner from "../Components/Spinner";
+import Loader from "../Components/Loader";
 import Logo from "../Components/Logo";
 import { Link } from "react-router-dom";
 
 function Wishlist() {
 	const { status, wishlist } = useSelector((state) => state.wishlist);
 
-	if (status === "loading") return <Spinner />;
+	if (status === "loading") return <Loader />;
 
 	if (wishlist.length === 0)
 		return (
