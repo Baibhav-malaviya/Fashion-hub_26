@@ -1,4 +1,4 @@
-const BASE_URL = "https://voguelane.onrender.com/api";
+const BASE_URL = "/api";
 
 export async function addProduct(product) {
 	//   const postData = { name, description, price, stock, category, tags, productImage };
@@ -22,7 +22,7 @@ export async function addProduct(product) {
 export async function fetchAllProducts(page) {
 	try {
 		// ?query=${query}
-		const response = await fetch(`${BASE_URL}/products?page=${page}&limit=10`, {
+		const response = await fetch(`${BASE_URL}/products?page=${page}&limit=12`, {
 			method: "GET",
 			headers: {
 				"Content-Type": "application/json",

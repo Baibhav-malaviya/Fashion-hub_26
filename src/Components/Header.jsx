@@ -1,5 +1,5 @@
 /* eslint-disable react-refresh/only-export-components */
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { getUser } from "../Service/apiUser";
 import Navbar from "./Navbar";
 import { Heart, LogIn, LogOut, Menu, Plus, ShoppingBag } from "lucide-react";
@@ -11,9 +11,12 @@ import { fetchCartData } from "../Features/cart/cartSlice";
 import { fetchWishlistData } from "../Features/wishlist/wishlistSlice";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
+import { getUserData } from "../Cache/cacheUser";
+import { deleteUser } from "../Cache/cacheUser";
 
 function Header() {
-	// const user = useLoaderData();//!Currently logged in user
+	const user = useLoaderData(); //!Currently logged in user
+	console.log("USER IN THE HEADER: ", user);
 	const { loggedIn, logout } = useAuth();
 	const navigate = useNavigate();
 	const [isHidden, setIsHidden] = useState(true);
@@ -69,9 +72,10 @@ function Header() {
 				{loggedIn ? (
 					<span
 						className="flex items-center justify-center p-[5px] hover:text-black hover:cursor-pointer  space-x-2 border-[1.5px] rounded border-stone-800"
-						onClick={() => {
+						onClick={async () => {
 							logout();
 							localStorage.removeItem("isLoggedIn");
+							await deleteUser();
 							navigate("/");
 						}}
 					>
@@ -105,7 +109,7 @@ function Header() {
 export default Header;
 
 export const loader = async () => {
-	const user = await getUser();
+	const user = (await getUserData()) || (await getUser());
 	if (user) return user;
 	return null;
 };

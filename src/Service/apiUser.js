@@ -1,4 +1,4 @@
-const BASE_URL = "https://voguelane.onrender.com/api";
+const BASE_URL = "/api";
 
 export async function login(email, password) {
 	const response = await fetch(`${BASE_URL}/user/login`, {
@@ -10,8 +10,8 @@ export async function login(email, password) {
 		credentials: "include", // Equivalent to Axios withCredentials: true
 		body: JSON.stringify({ email, password }),
 	});
-	const { data } = await response.json();
-	console.log(data);
+	const data = await response.json();
+	console.log(data?.data);
 	return data;
 }
 

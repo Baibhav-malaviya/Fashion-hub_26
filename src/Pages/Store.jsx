@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import Poster from "../Features/product/Poster";
 import { getProductByCategory } from "../Service/apiProducts";
+import ProductCard from "../Features/product/ProductCard";
 
 function Store() {
 	const posters = [
@@ -238,6 +239,9 @@ function Store() {
 					{sortedProducts().map((product) => (
 						<Card product={product} key={product._id} />
 					))}
+					{/* {sortedProducts().map((product) => (
+						<ProductCard product={product} key={product._id} />
+					))} */}
 				</div>
 
 				<div className="flex items-center justify-between px-10 mt-5">
@@ -252,7 +256,9 @@ function Store() {
 						}}
 					/>
 
-					<span className="text-gray-400 font-cutive-mono ">{`Page: ${currPage}/${totalPages}`}</span>
+					{currPage && (
+						<span className="text-gray-400 font-cutive-mono ">{`Page: ${currPage}/${totalPages}`}</span>
+					)}
 
 					<MoveRight
 						size={40}

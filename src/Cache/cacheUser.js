@@ -1,4 +1,9 @@
 // indexedDbUser.js
+var indexedDB =
+	window.indexedDB ||
+	window.mozIndexedDB ||
+	window.webkitIndexedDB ||
+	window.msIndexedDB;
 
 // Constant key to identify the user data
 const USER_KEY = "currentUser";

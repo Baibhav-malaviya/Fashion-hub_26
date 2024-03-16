@@ -51,14 +51,16 @@ function Cart() {
 	return (
 		<div>
 			<div className="flex flex-col p-4 ">
-				<div className="flex flex-col w-full px-4 space-y-2 divide-y divide-gray-300 md:px-24">
-					{cart.map((item) => (
-						<Item
-							item={item}
-							toggleSelectItem={toggleSelectItem}
-							key={item._id}
-						/>
-					))}
+				<div className="w-full px-4 md:px-24">
+					<div className="flex flex-col space-y-4 md:space-y-0 md:divide-y md:divide-gray-300">
+						{cart.map((item) => (
+							<Item
+								item={item}
+								toggleSelectItem={toggleSelectItem}
+								key={item._id}
+							/>
+						))}
+					</div>
 				</div>
 				<div className="flex items-center justify-between px-24 my-2">
 					<span className="font-semibold font-cutive-mono">

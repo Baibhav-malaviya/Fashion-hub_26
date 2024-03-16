@@ -7,21 +7,12 @@ import {
 import { useDispatch } from "react-redux";
 import { deleteFromCart } from "../Service/apiCart";
 import { useState } from "react";
+import WaveLoader from "../Components/WaveLoader";
 
 function Update({ productId, quantity }) {
 	const [deleting, setDeleting] = useState(false);
 	const dispatch = useDispatch();
-	if (deleting)
-		return (
-			<span className="p-2 font-semibold bg-gray-400 rounded-lg opacity-70">
-				<span>Deleting </span>
-				<span className="loading-dots">
-					<span className="dot"></span>
-					<span className="dot"></span>
-					<span className="dot"></span>
-				</span>
-			</span>
-		);
+	if (deleting) return <WaveLoader />;
 	return (
 		<div className="flex gap-4 text-stone-200">
 			<Minus

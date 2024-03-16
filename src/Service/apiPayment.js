@@ -1,4 +1,4 @@
-const BASE_URL = "https://voguelane.onrender.com/api";
+const BASE_URL = "/api";
 
 export async function addToCart(quantity, id) {
 	try {
