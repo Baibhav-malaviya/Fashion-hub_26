@@ -25,6 +25,7 @@ import {
 import Poster from "../Features/product/Poster";
 import { getProductByCategory } from "../Service/apiProducts";
 import ProductCard from "../Features/product/ProductCard";
+import FileDropzone from "../Components/FileDropzone";
 
 function Store() {
 	const posters = [
@@ -231,6 +232,7 @@ function Store() {
 					{/* Add more sorting options as needed */}
 				</select>
 			</div>
+			<FileDropzone />
 			<section>
 				<div className="my-4 font-bold text-center text-orange-500 pb-2 [text-shadow:_0_3px_0_rgb(0_0_0_/_40%)] text-7xl font-caveat ">
 					<span>{title}</span>
