@@ -1,4 +1,4 @@
-const BASE_URL = "/api";
+const BASE_URL = "https://voguelane.onrender.com/api";
 
 export async function addToWishlist(id, quantity = 1) {
 	try {

@@ -92,7 +92,12 @@ function Login() {
 						</div>
 					)}
 				</div>
-				<button className="p-2 px-3 font-semibold bg-gray-200 rounded shadow-sm">
+				<button
+					className={`p-2 px-3 font-semibold bg-gray-200 rounded shadow-sm ${
+						loging && "cursor-not-allowed"
+					}`}
+					disabled={loging}
+				>
 					{loging ? <WaveLoader /> : "Login"}
 				</button>
 			</form>
