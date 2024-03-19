@@ -1,4 +1,4 @@
-const BASE_URL = "https://voguelane.onrender.com/api";
+const BASE_URL = "https://fashionhub-rpzr.onrender.com/api";
 
 export async function addProduct(product) {
 	//   const postData = { name, description, price, stock, category, tags, productImage };
